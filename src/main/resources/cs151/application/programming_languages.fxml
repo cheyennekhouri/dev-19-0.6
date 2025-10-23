@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="cs151.application.MainController"
+      spacing="12" alignment="CENTER"
+      prefWidth="360" prefHeight="320">
+
+    <Label text="KnowledgeTrack: Programming Languages Page" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <Label text="Define Programming Language:"/>
+    <TextField fx:id="languageField" promptText="Enter primary language" maxWidth="260"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Save" onAction="#onSave"/>
+        <Button text="Edit" />
+        <Button text="View Saved Languages" onAction="#programmingLanguagesTable"/>
+        <Button text="Back to Home" onAction="#goBackToHome"/>
+    </HBox>
+
+</VBox>
