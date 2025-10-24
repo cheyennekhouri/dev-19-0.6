@@ -1,6 +1,16 @@
 # Name of application: KnowledgeTrack
 
-# Version: 0.4
+# Version: 0.6
+
+# who did what:
+1. Sean Reece Calantoc: 
+2. Kanishka Yadav: 
+3. Hoang Khang Pham: 
+4. Cheyenne Khouri: Created search page, adjusted saved profiles table
+
+# Any other instruction that users need to know:
+
+# Version: 0.5
 
 # who did what:
 1. Sean Reece Calantoc: Added required field validation in StudentProfile and MainController

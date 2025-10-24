@@ -10,6 +10,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -19,6 +21,7 @@ public class MainController {
     @FXML private Label popUp;
     @FXML private TextField nameField;
     @FXML private TextField languageField;
+    @FXML private TextField searchField;
 
     @FXML private TableView<ProgrammingLanguages> tableView;
     @FXML private TableView<StudentProfile> nameTable;
@@ -34,6 +37,10 @@ public class MainController {
     @FXML private TableColumn<StudentProfile, String> statusCol, empCol, roleCol;
     @FXML
     private ListView<String> multiSelectListView;
+
+    @FXML
+    private ImageView searchIcon;
+
 
     @FXML
     public void initializer() {
@@ -62,21 +69,24 @@ public class MainController {
             languagesList.setItems(opts);
             languagesList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         }
-        if (multiSelectListView != null) {
+        /*if (multiSelectListView != null) {
             multiSelectListView.setItems(FXCollections.observableArrayList("MySQL", "Postgres", "MongoDB"));
             multiSelectListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        }
+        }*/
         if (nameTable != null && nameCol != null) {
             nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-            statusCol.setCellValueFactory(new PropertyValueFactory<>("academicStatus"));
-            empCol.setCellValueFactory(cell ->
-                    new javafx.beans.property.SimpleStringProperty(
-                            cell.getValue().isEmployed() ? "Employed" : "Not Employed"));
-            roleCol.setCellValueFactory(new PropertyValueFactory<>("preferredRole"));
+            //statusCol.setCellValueFactory(new PropertyValueFactory<>("academicStatus"));
+            //empCol.setCellValueFactory(cell ->
+                    //new javafx.beans.property.SimpleStringProperty(
+                            //cell.getValue().isEmployed() ? "Employed" : "Not Employed"));
+            //roleCol.setCellValueFactory(new PropertyValueFactory<>("preferredRole"));
             nameTable.setItems(DataStore.getFullName());
             nameTable.getItems().sort(java.util.Comparator.comparing(
                     StudentProfile::getName, String.CASE_INSENSITIVE_ORDER));
         }
+
+
+
     }
 
     @FXML
@@ -124,6 +134,11 @@ public class MainController {
     @FXML
     protected void programmingLang(ActionEvent event) {
         swapScene(event, "/cs151/application/programming_languages.fxml", 640, 420, "Programming Languages");
+    }
+
+    @FXML
+    protected void searchProf(ActionEvent event) {
+        swapScene(event, "/cs151/application/search.fxml", 400, 300, "Search");
     }
 
     private boolean requiredFields() {
@@ -176,10 +191,10 @@ public class MainController {
             target = new StudentProfile(name);
             DataStore.getFullName().add(target); // table updates immediately
         }
-        target.setAcademicStatus(status);
-        target.setEmployeed(employed);
-        target.setJobDetails(job);
-        target.setPreferredRole(role);
+        //target.setAcademicStatus(status);
+        //target.setEmployeed(employed);
+        //target.setJobDetails(job);
+        //target.setPreferredRole(role);
 
         DataStore.saveProfiles();
     }

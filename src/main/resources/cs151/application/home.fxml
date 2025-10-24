@@ -20,6 +20,9 @@
         <Button text="Student Profile"
             onAction="#studentProfile"/>
 
+        <Button text="Search"
+            onAction="#searchProf"/>
+
         <Button text="Back to Front Page"
             onAction="#onNavigateButtonClick"/>
     </VBox>
