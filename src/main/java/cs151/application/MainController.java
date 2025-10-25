@@ -125,10 +125,15 @@ public class MainController {
     protected void programmingLang(ActionEvent event) {
         swapScene(event, "/cs151/application/programming_languages.fxml", 640, 420, "Programming Languages");
     }
-    //search
+    //search page
     @FXML
     protected void searchProf(ActionEvent event) {
-        swapScene(event, "/cs151/application/search.fxml", 360, 320, "Search Profiles");
+        swapScene(event, "/cs151/application/search.fxml", 600, 420, "Search Profiles");
+    }
+    //search result
+    @FXML
+    protected void search(ActionEvent event) {
+        swapScene(event, "/cs151/application/search_results.fxml", 400, 300, "Search Results");
     }
 
     private boolean requiredFields() {
