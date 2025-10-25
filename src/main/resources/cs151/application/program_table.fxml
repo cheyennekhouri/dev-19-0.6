@@ -10,7 +10,7 @@
 
     <VBox alignment="CENTER" spacing="12"
           AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20"
-          AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20">
+          AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20" >
 
         <TableView fx:id="tableView" prefHeight="280.0" prefWidth="560.0">
             <columns>

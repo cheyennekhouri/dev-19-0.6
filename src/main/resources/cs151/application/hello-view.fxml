@@ -6,7 +6,7 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="cs151.application.MainController"
-      spacing="10" alignment="CENTER" prefWidth="320" prefHeight="240">
+      spacing="10" alignment="CENTER" prefWidth="320" prefHeight="240" >
     <Label fx:id="popUp" text="KnowledgeTrackApplication" />
     <Label fx:id="popUp2" text="Welcome!" />
     <Label fx:id="popUp3" text="" />

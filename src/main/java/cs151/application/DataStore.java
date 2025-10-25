@@ -153,8 +153,8 @@ public final class DataStore {
                 for (StudentProfile sp : NAME) {
                     String langsJoined = (sp.getLanguages() == null) ? "" : String.join("|", sp.getLanguages());
                     String line = String.join(",",
-                            csv(sp.getName()),
-                            csv(sp.getMajor()),
+                            csv(sp.getName())
+                            /*csv(sp.getMajor()),
                             csv(sp.getAcademicStatus()),
                             csv(sp.isEmployed() ? "Employed" : "Not Employed"),
                             csv(sp.getJobDetails()),
@@ -162,7 +162,7 @@ public final class DataStore {
                             csv(sp.getPreferredRole()),
                             csv(sp.getComments()),
                             csv(Boolean.toString(sp.isWhiteList())),
-                            csv(Boolean.toString(sp.isBlackList()))
+                            csv(Boolean.toString(sp.isBlackList()))*/
                     );
                     bw.write(line);
                     bw.newLine();
@@ -180,22 +180,22 @@ public final class DataStore {
         try (BufferedReader br = Files.newBufferedReader(PROFILE_FILE, StandardCharsets.UTF_8)) {
             br.readLine(); // skip header
             for (String row; (row = br.readLine()) != null; ) {
-                String[] c = parseCsvLine(row, 10);
+                String[] c = parseCsvLine(row, 1);
                 if (c == null) continue;
 
                 StudentProfile sp = new StudentProfile(
-                        c[0],
-                        c[1],
-                        c[5].isEmpty() ? List.of() : List.of(c[5].split("\\|")) // languages
+                        c[0]//,
+                     /*   c[1],
+                        c[5].isEmpty() ? List.of() : List.of(c[5].split("\\|")) // languages*/
                 );
-                sp.setAcademicStatus(c[2]);
+                /*sp.setAcademicStatus(c[2]);
                 sp.setEmployeed("Employed".equalsIgnoreCase(c[3]));
                 sp.setJobDetails(c[4]);
                 sp.setPreferredRole(c[6]);
                 sp.setComments(c[7]);
                 sp.setWhiteList(Boolean.parseBoolean(c[8]));
                 sp.setBlackList(Boolean.parseBoolean(c[9]));
-
+*/
                 NAME.add(sp);
             }
         } catch (IOException e) {
