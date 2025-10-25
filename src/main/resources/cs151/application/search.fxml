@@ -1,21 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<VBox xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="cs151.application.MainController"
-      spacing="12" alignment="CENTER"
-      prefWidth="360" prefHeight="320" style="-fx-background-color: #C9E8C7">
+            prefWidth="1000" prefHeight="680"
+            style="-fx-background-color: white;">
 
-    <Label text="Search for Profiles" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+    <!-- Top bar -->
+    <top>
+        <HBox spacing="8" BorderPane.alignment="CENTER_LEFT"
+              style="-fx-background-color: white; -fx-border-color: #0C5007; -fx-border-width: 0 0 1 0;">
+            <children>
+                <Label text="Search by name:"/>
+                <TextField fx:id="tfSearchName" promptText="Enter student name…" HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnSearchByName" text="Search"/>
+                <Button fx:id="btnClear" text="Clear"/>
 
-    <TextField fx:id="searchField" promptText="Search" maxWidth="260" style="-fx-border-color: #0C5007"/>
-    <Button text="Back to Home" onAction="#goBackToHome" style="-fx-border-color: #0C5007; -fx-text-fill: #0C5007;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Back to Home"
+                        onAction="#goBackToHome"
+                        style="-fx-background-color: transparent; -fx-text-fill: #000000; -fx-text-base-color: #000000; -fx-border-color: #000000; -fx-border-width: 1;"/>
+            </children>
+            <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+        </HBox>
+    </top>
 
-</VBox>
+    <!-- Center -->
+    <center>
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background: white; -fx-background-insets: 0; -fx-control-inner-background: white;">
+            <content>
+                <VBox spacing="12" style="-fx-background-color: white;">
+
+                    <!-- Results card (WHITE box) -->
+                    <VBox spacing="6"
+                          style="-fx-background-color: white; -fx-border-color: #D5E7D3; -fx-border-radius: 8; -fx-background-radius: 8;">
+                        <children>
+                            <Label text="Results (select a student if multiple match):"/>
+                            <ListView fx:id="lvResults" prefHeight="140"/>
+                        </children>
+                        <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                    </VBox>
+
+                    <!-- Filters card (WHITE box) -->
+                    <VBox spacing="10"
+                          style="-fx-background-color: white; -fx-border-color: #D5E7D3; -fx-border-radius: 8; -fx-background-radius: 8;">
+                        <children>
+                            <Label text="If you can't find by name, filter by:" style="-fx-font-weight: bold;"/>
+                            <HBox spacing="8">
+                                <children>
+                                    <Label text="Achievements:" minWidth="110"/>
+                                    <TextField fx:id="tfFilterAchievements" HBox.hgrow="ALWAYS"
+                                               promptText="e.g., Dean’s List, Hackathon"/>
+                                </children>
+                            </HBox>
+                            <HBox spacing="8">
+                                <children>
+                                    <Label text="Academic status:" minWidth="110"/>
+                                    <TextField fx:id="tfFilterStatus" HBox.hgrow="ALWAYS"
+                                               promptText="e.g., Good Standing / Probation"/>
+                                </children>
+                            </HBox>
+                            <HBox spacing="8">
+                                <children>
+                                    <Label text="Career goals:" minWidth="110"/>
+                                    <TextField fx:id="tfFilterCareerGoals" HBox.hgrow="ALWAYS"
+                                               promptText="e.g., Backend Engineer"/>
+                                </children>
+                            </HBox>
+                            <HBox spacing="8" alignment="CENTER_RIGHT">
+                                <children>
+                                    <Button fx:id="btnApplyFilters" text="Apply Filters"/>
+                                    <Button fx:id="btnResetFilters" text="Reset"/>
+                                </children>
+                            </HBox>
+                        </children>
+                        <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                    </VBox>
+
+                    <!-- Selected student card (WHITE box) -->
+                    <VBox spacing="10"
+                          style="-fx-background-color: white; -fx-border-color: #D5E7D3; -fx-border-radius: 8; -fx-background-radius: 8;">
+                        <children>
+                            <Label text="Selected Student" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+
+                            <GridPane hgap="10" vgap="8">
+                                <columnConstraints>
+                                    <ColumnConstraints minWidth="120"/>
+                                    <ColumnConstraints hgrow="ALWAYS"/>
+                                </columnConstraints>
+                                <children>
+                                    <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                    <Label fx:id="lblName" text="—" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                                    <Label text="Academic status:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                    <Label fx:id="lblAcademicStatus" text="—" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                                    <Label text="Current job:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                    <Label fx:id="lblCurrentJob" text="—" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                                    <Label text="Job details:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                    <TextArea fx:id="taJobDetails" editable="false" wrapText="true" prefRowCount="3"
+                                              promptText="Role, company, duration, responsibilities"
+                                              GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                                </children>
+                            </GridPane>
+
+                            <Label text="Achievements"/>
+                            <ListView fx:id="lvAchievements" prefHeight="90"/>
+
+                            <Label text="Skills"/>
+                            <ListView fx:id="lvSkills" prefHeight="90"/>
+
+                            <Label text="Career goals"/>
+                            <ListView fx:id="lvCareerGoals" prefHeight="90"/>
+
+                            <Label text="Programming languages"/>
+                            <ListView fx:id="lvProgrammingLanguages" prefHeight="90"/>
+
+                            <Label text="Faculty comments"/>
+                            <TextArea fx:id="taComments" wrapText="true" prefRowCount="4"
+                                      promptText="Add comments over time…"/>
+
+                            <HBox spacing="12" alignment="CENTER_LEFT">
+                                <children>
+                                    <CheckBox fx:id="cbWhitelist" text="Whitelisted"/>
+                                    <CheckBox fx:id="cbBlacklist" text="Blacklisted"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Button fx:id="btnEditProfile" text="Edit"/>
+                                    <Button fx:id="btnDeleteProfile" text="Delete"/>
+                                </children>
+                            </HBox>
+
+                            <Label fx:id="lblDuplicateNameError"
+                                   text="Error: A profile with this student name already exists."
+                                   visible="false"
+                                   style="-fx-text-fill: #c62828; -fx-font-weight: bold;"/>
+                        </children>
+                        <padding>
+                            <Insets top="12" right="12" bottom="12" left="12"/>
+                        </padding>
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <!-- Bottom -->
+    <bottom>
+        <HBox BorderPane.alignment="CENTER_LEFT"
+              style="-fx-background-color: white; -fx-border-color: #0C5007; -fx-border-width: 1 0 0 0;">
+            <children>
+                <Label fx:id="lblStatusBar" text="Ready."/>
+            </children>
+            <padding>
+                <Insets top="8" right="12" bottom="8" left="12"/>
+            </padding>
+        </HBox>
+    </bottom>
+</BorderPane>
