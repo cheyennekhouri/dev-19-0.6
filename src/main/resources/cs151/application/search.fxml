@@ -12,11 +12,11 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="cs151.application.MainController"
       spacing="12" alignment="CENTER"
-      prefWidth="360" prefHeight="320" >
+      prefWidth="360" prefHeight="320" style="-fx-background-color: #C9E8C7">
 
     <Label text="Search for Profiles" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
 
-    <TextField fx:id="searchField" promptText="Search" maxWidth="260"/>
-    <Button text="Back to Home" onAction="#goBackToHome"/>
+    <TextField fx:id="searchField" promptText="Search" maxWidth="260" style="-fx-border-color: #0C5007"/>
+    <Button text="Back to Home" onAction="#goBackToHome" style="-fx-border-color: #0C5007; -fx-text-fill: #0C5007;"/>
 
 </VBox>

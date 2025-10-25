@@ -68,11 +68,11 @@ public class MainController {
         }
         if (nameTable != null && nameCol != null) {
             nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-            statusCol.setCellValueFactory(new PropertyValueFactory<>("academicStatus"));
-            empCol.setCellValueFactory(cell ->
+            //statusCol.setCellValueFactory(new PropertyValueFactory<>("academicStatus"));
+            /*empCol.setCellValueFactory(cell ->
                     new javafx.beans.property.SimpleStringProperty(
                             cell.getValue().isEmployed() ? "Employed" : "Not Employed"));
-            roleCol.setCellValueFactory(new PropertyValueFactory<>("preferredRole"));
+            roleCol.setCellValueFactory(new PropertyValueFactory<>("preferredRole"));*/
             nameTable.setItems(DataStore.getFullName());
             nameTable.getItems().sort(java.util.Comparator.comparing(
                     StudentProfile::getName, String.CASE_INSENSITIVE_ORDER));
@@ -91,7 +91,7 @@ public class MainController {
             fullName.sort(nameCompare);
 
             nameTable.setItems(fullName);
-           nameCol.prefWidthProperty().bind(nameTable.widthProperty().multiply(0.5));
+            nameCol.prefWidthProperty().bind(nameTable.widthProperty().multiply(0.5));
         }
     }
 
@@ -103,7 +103,7 @@ public class MainController {
     //homepage, contains: define lang, profile, back to front
     @FXML
     private void goBackToHome(ActionEvent event) {
-        swapScene(event, "/cs151/application/home.fxml", 320, 240, "KnowledgeTrack Home");
+        swapScene(event, "/cs151/application/home.fxml", 340, 260, "KnowledgeTrack Home");
     }
     //saved lang table, contains: table, back to define lang
     @FXML
@@ -199,4 +199,3 @@ public class MainController {
         }
     }
 }
-

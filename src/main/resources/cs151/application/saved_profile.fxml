@@ -9,19 +9,19 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="cs151.application.MainController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #C9E8C7">
 
     <VBox alignment="CENTER" spacing="12"
           AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20"
-          AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20" >
+          AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20" style="-fx-background-color: #C9E8C7">
 
-        <TableView fx:id="nameTable" prefHeight="280.0" prefWidth="560.0">
+        <TableView fx:id="nameTable" prefHeight="280.0" prefWidth="560.0" style="-fx-border-color: #0C5007;">
             <columns>
-                <TableColumn fx:id="nameCol"    text="Name"              prefWidth="160.0"/>
+                <TableColumn fx:id="nameCol" text="Student Name" prefWidth="160.0" />
 
             </columns>
         </TableView>
 
-        <Button text="Back to Profile" onAction="#studentProfile"/>
+        <Button text="Back to Profile" onAction="#studentProfile" style="-fx-border-color: #0C5007; -fx-text-fill: #0C5007;"/>
     </VBox>
 </AnchorPane>

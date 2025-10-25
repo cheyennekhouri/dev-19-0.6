@@ -9,21 +9,20 @@
     <VBox xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="cs151.application.MainController"
-          spacing="10" alignment="CENTER" prefWidth="320" prefHeight="240">
-        <Label fx:id="popUp" text="Welcome to KnowledgeTrack Homepage!" />
+          spacing="10" alignment="CENTER" prefWidth="340" prefHeight="260" style="-fx-background-color: #C9E8C7">
+        <Label fx:id="popUp" text="Welcome to KnowledgeTrack Homepage!" style="-fx-font-size: 15px;" />
         <Label fx:id="popUp2" text="Navigate to..." />
-        <Label fx:id="popUp3" text="" />
 
         <Button text="Define Programming Languages"
-                onAction="#programmingLang"/>
+                onAction="#programmingLang" style="-fx-border-color: #0C5007; -fx-text-fill: #0C5007;"/>
 
         <Button text="Student Profile"
-            onAction="#studentProfile"/>
+            onAction="#studentProfile" style="-fx-border-color: #0C5007; -fx-text-fill: #0C5007;"/>
 
         <Button text="Search"
-            onAction="#searchProf"/>
+            onAction="#searchProf" style="-fx-border-color: #0C5007; -fx-text-fill: #0C5007;"/>
 
         <Button text="Back to Front Page"
-            onAction="#onNavigateButtonClick"/>
+            onAction="#onNavigateButtonClick" style="-fx-border-color: #0C5007; -fx-text-fill: #0C5007;"/>
     </VBox>
 

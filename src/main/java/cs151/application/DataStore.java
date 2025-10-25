@@ -153,8 +153,8 @@ public final class DataStore {
                 for (StudentProfile sp : NAME) {
                     String langsJoined = (sp.getLanguages() == null) ? "" : String.join("|", sp.getLanguages());
                     String line = String.join(",",
-                            csv(sp.getName())
-                            /*csv(sp.getMajor()),
+                            csv(sp.getName()),
+                            csv(sp.getMajor()),
                             csv(sp.getAcademicStatus()),
                             csv(sp.isEmployed() ? "Employed" : "Not Employed"),
                             csv(sp.getJobDetails()),
@@ -162,7 +162,7 @@ public final class DataStore {
                             csv(sp.getPreferredRole()),
                             csv(sp.getComments()),
                             csv(Boolean.toString(sp.isWhiteList())),
-                            csv(Boolean.toString(sp.isBlackList()))*/
+                            csv(Boolean.toString(sp.isBlackList()))
                     );
                     bw.write(line);
                     bw.newLine();
