@@ -125,10 +125,12 @@ public class MainController {
     protected void programmingLang(ActionEvent event) {
         swapScene(event, "/cs151/application/programming_languages.fxml", 640, 420, "Programming Languages");
     }
+    //search
     @FXML
     protected void searchProf(ActionEvent event) {
         swapScene(event, "/cs151/application/search.fxml", 360, 320, "Search Profiles");
     }
+
     private boolean requiredFields() {
         String name   = nameField != null && nameField.getText() != null ? nameField.getText().trim() : "";
         String status = dropdown  != null && dropdown.getValue() != null ? dropdown.getValue().trim() : "";

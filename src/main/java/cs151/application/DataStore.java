@@ -162,8 +162,7 @@ public final class DataStore {
                             csv(sp.getPreferredRole()),
                             csv(sp.getComments()),
                             csv(Boolean.toString(sp.isWhiteList())),
-                            csv(Boolean.toString(sp.isBlackList()))
-                    );
+                            csv(Boolean.toString(sp.isBlackList())));
                     bw.write(line);
                     bw.newLine();
                 }

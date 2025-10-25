@@ -10,6 +10,7 @@
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="cs151.application.MainController"
           spacing="10" alignment="CENTER" prefWidth="340" prefHeight="260" style="-fx-background-color: #C9E8C7">
+
         <Label fx:id="popUp" text="Welcome to KnowledgeTrack Homepage!" style="-fx-font-size: 15px;" />
         <Label fx:id="popUp2" text="Navigate to..." />
 

@@ -18,7 +18,6 @@
         <TableView fx:id="nameTable" prefHeight="280.0" prefWidth="560.0" style="-fx-border-color: #0C5007;">
             <columns>
                 <TableColumn fx:id="nameCol" text="Student Name" prefWidth="160.0" />
-
             </columns>
         </TableView>
 
