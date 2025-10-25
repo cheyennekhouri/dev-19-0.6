@@ -184,7 +184,7 @@ public class MainController {
         }
         if (target == null) {
             target = new StudentProfile(name);
-            DataStore.getFullName().add(target); // table updates immediately
+            DataStore.getFullName().add(target);
         }
         target.setAcademicStatus(status);
         target.setEmployeed(employed);
@@ -193,7 +193,6 @@ public class MainController {
 
         DataStore.saveProfiles();
     }
-
     private void swapScene(ActionEvent event, String fxml, int w, int h, String title) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource(fxml));
