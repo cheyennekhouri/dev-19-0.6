@@ -35,6 +35,10 @@ public class MainController {
     @FXML
     private ListView<String> multiSelectListView;
 
+    @FXML private TextArea commentsArea;
+    @FXML private CheckBox whiteListBox;
+    @FXML private CheckBox blackListBox;
+
     @FXML
     public void initializer() {
         ObservableList<String> items = FXCollections.observableArrayList("MySQL", "Postgres", "MongoDB");
@@ -76,6 +80,31 @@ public class MainController {
             nameTable.setItems(DataStore.getFullName());
             nameTable.getItems().sort(java.util.Comparator.comparing(
                     StudentProfile::getName, String.CASE_INSENSITIVE_ORDER));
+        }
+        if(whiteListBox != null && blackListBox != null) {
+            final boolean[] internal = new boolean[] {false};
+            whiteListBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                if(internal[0]) return;
+                try{
+                    internal[0] = true;
+                    if(newValue){
+                        blackListBox.setSelected(false);    // selecting whiteList
+                    }
+                } finally {
+                    internal[0] = false;
+                }
+            });
+            blackListBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                if(internal[0]) return;
+                try{
+                    internal[0] = true;
+                    if(newValue){
+                        whiteListBox.setSelected(false);    // selecting blackList
+                    }
+                } finally {
+                    internal[0] = false;
+                }
+            });
         }
     }
 
@@ -180,6 +209,9 @@ public class MainController {
         target.setEmployeed(employed);
         target.setJobDetails(job);
         target.setPreferredRole(role);
+        target.setComments(commentsArea.getText());
+        target.setWhiteList(whiteListBox.isSelected());
+        target.setBlackList(blackListBox.isSelected());
 
         DataStore.saveProfiles();
     }
