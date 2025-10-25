@@ -36,7 +36,7 @@
             <content>
                 <VBox spacing="12" style="-fx-background-color: white;">
 
-                    <!-- Results card (WHITE box) -->
+
                     <VBox spacing="6"
                           style="-fx-background-color: white; -fx-border-color: #D5E7D3; -fx-border-radius: 8; -fx-background-radius: 8;">
                         <children>
@@ -46,7 +46,7 @@
                         <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
                     </VBox>
 
-                    <!-- Filters card (WHITE box) -->
+
                     <VBox spacing="10"
                           style="-fx-background-color: white; -fx-border-color: #D5E7D3; -fx-border-radius: 8; -fx-background-radius: 8;">
                         <children>
@@ -82,7 +82,7 @@
                         <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
                     </VBox>
 
-                    <!-- Selected student card (WHITE box) -->
+
                     <VBox spacing="10"
                           style="-fx-background-color: white; -fx-border-color: #D5E7D3; -fx-border-radius: 8; -fx-background-radius: 8;">
                         <children>
