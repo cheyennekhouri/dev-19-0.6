@@ -3,7 +3,7 @@
 # Version: 0.6
 
 # who did what:
-1. Sean Reece Calantoc: 
+1. Sean Reece Calantoc: Fixed Search page bindings and enabled Delete button
 2. Kanishka Yadav: Added SearchProfileController and updated search.fxml to include TableView for Search Profiles page
 3. Hoang Khang Pham: Set up search fields on the search page and added a “Back to Home” button.
 4. Cheyenne Khouri: Created search page, adjusted saved profiles table
