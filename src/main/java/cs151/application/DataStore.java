@@ -61,6 +61,12 @@ public final class DataStore {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        seedDefaultProfilesIfAbsent();
+        loadProfiles();
+
+        if (NAME.size() != 5) {
+            throw new IllegalStateException("profiles.csv must contain exactly 5 student profiles. Found: " + NAME.size());
+        }
     }
 
     public static void save() {
@@ -135,7 +141,6 @@ public final class DataStore {
         return out;
     }
 
-    // --- DataStore.java (add near other fields) ---
     public static boolean existsByExactName(String name) {
         if (name == null) return false;
         for (StudentProfile sp : NAME) {
@@ -170,7 +175,7 @@ public final class DataStore {
                     PROFILE_FILE, StandardCharsets.UTF_8,
                     StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
 
-                // header (10 columns)
+
                 bw.write(String.join(",", "name", "major", "academicStatus", "employment",
                         "jobDetails", "languages", "preferredRole", "comments", "whiteList", "blackList"));
                 bw.newLine();
@@ -196,6 +201,34 @@ public final class DataStore {
             e.printStackTrace();
         }
     }
+    private static void seedDefaultProfilesIfAbsent() {
+        if (Files.exists(PROFILE_FILE)) return;
+
+        NAME.setAll(
+                StudentProfile.of(
+                        "Hoang Pham","Software Engineering","Junior",
+                        true,"Intern @ Acme","Java|Python","Backend","Strong OOP", true,false
+                ),
+                StudentProfile.of(
+                        "Cheyenne Khouri","Computer Science","Sophomore",
+                        false,"","Java|C++","Full-stack","Interested in web dev", false,false
+                ),
+                StudentProfile.of(
+                        "Kanishka Yadav","Information Systems","Senior",
+                        true,"Help Desk","Python|SQL","Data/BI","Great at dashboards", true,false
+                ),
+                StudentProfile.of(
+                        "Sean Reece Calantoc","Data Science","Freshman",
+                        false,"","Python|R","ML/AI","Learning pandas", false,false
+                ),
+                StudentProfile.of(
+                        "Emily Pham","Software Engineering","Junior",
+                        false,"","Java|JavaFX","Frontend","Enjoys UI/UX", false,true
+                )
+        );
+        saveProfiles();
+    }
+
 
     // --- DataStore.java (replace entire loadProfiles) ---
     public static void loadProfiles() {

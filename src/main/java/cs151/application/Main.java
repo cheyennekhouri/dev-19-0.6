@@ -23,7 +23,6 @@ public class Main extends Application {
         DataStore.save();
         DataStore.saveProfiles();
     }
-
     public static void main(String[] args) {
         launch();
     }

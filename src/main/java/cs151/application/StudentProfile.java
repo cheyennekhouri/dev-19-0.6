@@ -113,6 +113,26 @@ public class StudentProfile  implements Comparable<StudentProfile> {
     public String getLanguagesString(){
         return String.join(" | ", languages);
     }
+
+    public static StudentProfile of(
+            String name, String major, String academicStatus,
+            boolean employed, String jobDetails, String languagesPipe,
+            String preferredRole, String comments, boolean whiteList, boolean blackList
+    ) {
+        StudentProfile s = new StudentProfile(name);
+        s.setMajor(major);
+        s.setAcademicStatus(academicStatus);
+        s.setEmployeed(employed);
+        s.setJobDetails(jobDetails);
+        s.setLanguages(languagesPipe == null || languagesPipe.isEmpty()
+                ? List.of() : List.of(languagesPipe.split("\\|")));
+        s.setPreferredRole(preferredRole);
+        s.setComments(comments);
+        s.setWhiteList(whiteList);
+        s.setBlackList(blackList);
+        return s;
+    }
+
     //compare names to sort
     @Override
     public int compareTo(StudentProfile other){
