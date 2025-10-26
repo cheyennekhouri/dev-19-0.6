@@ -128,7 +128,7 @@ public class MainController {
     //search page
     @FXML
     protected void searchProf(ActionEvent event) {
-        swapScene(event, "/cs151/application/search.fxml", 750, 500, "Search Student Profiles");
+        swapScene(event, "/cs151/application/search.fxml", 1000, 680, "Search Student Profiles");
     }
     //search result
     @FXML
@@ -158,12 +158,24 @@ public class MainController {
     @FXML
     private void onSave() {
         if (languageField == null) return;
-        String lang  = languageField.getText() == null ? "" : languageField.getText().trim();
-        if (!lang.isEmpty()) {
-            DataStore.getList().add(new ProgrammingLanguages(lang));
-            DataStore.save();
-            languageField.clear();
+
+        var langsList = DataStore.getList();
+        if (langsList.size() >= 3) {
+            error("Only 3 programming languages are allowed.");
+            return;
         }
+        String lang  = languageField.getText() == null ? "" : languageField.getText().trim();
+        if (lang.isEmpty()) return;
+        boolean duplicate = langsList.stream().anyMatch(pl ->
+                pl.getProgrammingLanguage() != null &&
+                        pl.getProgrammingLanguage().equalsIgnoreCase(lang));
+        if (duplicate) {
+            error("Language already exists.");
+            return;
+        }
+        langsList.add(new ProgrammingLanguages(lang));
+        DataStore.save();
+        languageField.clear();
     }
 
     //saves profile
@@ -171,17 +183,23 @@ public class MainController {
     private void save() {
         if (!requiredFields()) return;
         final String name     = nameField.getText().trim();
+
+        var profiles = DataStore.getFullName();
+        StudentProfile target = null;
+        for (StudentProfile sp : profiles) {
+            if (sp.getName() != null && sp.getName().equalsIgnoreCase(name)) {
+                target = sp; break;
+            }
+        }
+        if (target == null && profiles.size() >= 5) {
+            error("Only 5 student profiles are allowed.");
+            return;
+        }
         final String status   = dropdown.getValue();
         final boolean employed= toggleButton.isSelected();
         final String job      = textField.getText().trim();
         final String role     = dropDown.getValue();
 
-        StudentProfile target = null;
-        for (StudentProfile sp : DataStore.getFullName()) {
-            if (sp.getName() != null && sp.getName().equalsIgnoreCase(name)) {
-                target = sp; break;
-            }
-        }
         if (target == null) {
             target = new StudentProfile(name);
             DataStore.getFullName().add(target);
