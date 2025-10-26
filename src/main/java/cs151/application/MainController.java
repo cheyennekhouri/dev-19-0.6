@@ -128,7 +128,7 @@ public class MainController {
     //search page
     @FXML
     protected void searchProf(ActionEvent event) {
-        swapScene(event, "/cs151/application/search.fxml", 600, 420, "Search Profiles");
+        swapScene(event, "/cs151/application/search.fxml", 750, 500, "Search Student Profiles");
     }
     //search result
     @FXML

@@ -13,16 +13,13 @@ public final class DataStore {
     private static final Path DATA_FILE = DATA_DIR.resolve("languages.csv");
     private static final Path PROFILE_FILE = DATA_DIR.resolve("profiles.csv");
 
-    private static final ObservableList<ProgrammingLanguages> LIST =
-            FXCollections.observableArrayList();
+    private static final ObservableList<ProgrammingLanguages> LIST = FXCollections.observableArrayList();
 
-    private static final ObservableList<StudentProfile> NAME =
-            FXCollections.observableArrayList();
+    private static final ObservableList<StudentProfile> NAME = FXCollections.observableArrayList();
 
     private static boolean loadedOnce = false;
 
-    private DataStore() {
-    }
+    private DataStore() {}
 
     public static ObservableList<ProgrammingLanguages> getList() {
         return LIST;
